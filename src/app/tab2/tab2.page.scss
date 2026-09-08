@@ -1,0 +1,95 @@
+.schedule-container {
+  padding: 16px;
+}
+
+.schedule-container h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 18px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Header hari */
+ion-accordion {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+ion-item {
+  --background: #ffffff;
+}
+
+ion-item h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+ion-item p {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Tabel */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 0 10px;
+}
+
+table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+/* Header tabel */
+th {
+  background: #3880c2;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Isi tabel */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+/* Baris selang-seling */
+tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+/* Nama mata kuliah */
+td strong {
+  font-weight: 600;
+}
+
+/* Kolom jam */
+td:nth-child(2) {
+  white-space: nowrap;
+}
+
+/* Kolom ruang */
+td:nth-child(3) {
+  min-width: 150px;
+}
+
+/* Kolom dosen */
+td:nth-child(4) {
+  min-width: 220px;
+}
