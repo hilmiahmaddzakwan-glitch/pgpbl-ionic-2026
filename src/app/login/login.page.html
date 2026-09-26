@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true" class="auth-page">
+  <div class="auth-shell">
+
+
+    <ion-card class="auth-card">
+      <ion-card-header>
+        <ion-card-title>Masuk</ion-card-title>
+        <ion-card-subtitle>
+          Gunakan akun Anda untuk masuk ke aplikasi.
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="auth-content">
+        <ion-item lines="none" class="input-wrap">
+          <ion-icon name="mail-outline" slot="start" class="field-icon"></ion-icon>
+          <ion-input
+            [(ngModel)]="email"
+            name="email"
+            label="Email"
+            labelPlacement="floating"
+            placeholder="Masukkan email Anda"
+            type="email">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="input-wrap">
+          <ion-icon name="lock-closed-outline" slot="start" class="field-icon"></ion-icon>
+          <ion-input
+            [(ngModel)]="password"
+            name="password"
+            [type]="showPassword ? 'text' : 'password'"
+            label="Password"
+            labelPlacement="floating"
+            placeholder="Masukkan password Anda">
+            <ion-button
+              fill="clear"
+              slot="end"
+              class="visibility-button"
+              type="button"
+              (click)="showPassword = !showPassword">
+              <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          class="primary-button"
+          (click)="login()"
+          [disabled]="isSubmitting">
+          <ion-spinner *ngIf="isSubmitting" name="crescent" class="button-spinner"></ion-spinner>
+          <span *ngIf="!isSubmitting">Login</span>
+          <span *ngIf="isSubmitting">Sedang masuk...</span>
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="clear"
+          routerLink="/register"
+          class="secondary-button">
+          Buat akun baru
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

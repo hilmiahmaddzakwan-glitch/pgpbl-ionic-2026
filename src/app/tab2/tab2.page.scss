@@ -1,95 +1,110 @@
+ion-content {
+  --background: #f5f7fb;
+}
+
 .schedule-container {
-  padding: 16px;
+  padding: 18px 16px 24px;
 }
 
 .schedule-container h2 {
-  margin: 5px 0 0;
-  font-size: 24px;
+  margin: 8px 0 0;
+  font-size: 1.7rem;
   font-weight: 700;
+  color: #0f172a;
 }
 
 .subtitle {
-  margin: 4px 0 18px;
-  color: #666;
-  font-size: 14px;
+  margin: 6px 0 18px;
+  color: #52627a;
+  font-size: 0.92rem;
 }
 
-/* Header hari */
+ion-accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 ion-accordion {
-  margin-bottom: 8px;
-  border-radius: 8px;
+  margin-bottom: 0;
+  border-radius: 18px;
   overflow: hidden;
+  box-shadow: none;
+  border: 1px solid #dfe8f5;
 }
 
 ion-item {
   --background: #ffffff;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 62px;
 }
 
 ion-item h3 {
   margin: 0;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 ion-item p {
-  margin: 3px 0 0;
-  font-size: 13px;
-  color: #777;
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #52627a;
 }
 
-/* Tabel */
 .table-container {
   width: 100%;
   overflow-x: auto;
-  padding: 0 0 10px;
+  background: #ffffff;
+  padding: 10px 8px 12px;
 }
 
 table {
   width: 100%;
-  min-width: 700px;
+  min-width: 760px;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 0.82rem;
+  color: #0f172a;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* Header tabel */
 th {
-  background: #3880c2;
-  color: white;
-  padding: 10px;
+  background: #1d4ed8;
+  color: #ffffff;
+  padding: 12px 10px;
   text-align: left;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
 }
 
-/* Isi tabel */
 td {
-  padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5edf8;
   vertical-align: top;
-  line-height: 1.5;
+  line-height: 1.55;
+  background: #ffffff;
 }
 
-/* Baris selang-seling */
-tbody tr:nth-child(even) {
-  background: #f7f7f7;
+tbody tr:nth-child(even) td {
+  background: #f8fbff;
 }
 
-/* Nama mata kuliah */
 td strong {
-  font-weight: 600;
+  font-weight: 700;
+  color: #0f172a;
 }
 
-/* Kolom jam */
 td:nth-child(2) {
   white-space: nowrap;
 }
 
-/* Kolom ruang */
 td:nth-child(3) {
   min-width: 150px;
 }
 
-/* Kolom dosen */
 td:nth-child(4) {
   min-width: 220px;
 }
+

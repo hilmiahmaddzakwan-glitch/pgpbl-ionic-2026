@@ -1,0 +1,51 @@
+ion-content {
+  --background: #1d4ed8;
+}
+
+.splash-section {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  text-align: center;
+}
+
+.splash-card {
+  width: min(100%, 360px);
+  padding: 28px 24px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-section img {
+  width: 94px;
+  height: 94px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.splash-section ion-spinner {
+  margin-bottom: 12px;
+  --color: #ffffff;
+}
+
+.splash-section p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.splash-section small {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.04em;
+}

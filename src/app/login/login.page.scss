@@ -1,0 +1,171 @@
+.auth-page {
+  --background: #f5f7fb;
+}
+
+.auth-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 20px;
+  gap: 20px;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 420px);
+  justify-content: center;
+}
+
+.brand-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.18);
+}
+
+.brand-icon ion-icon {
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-copy h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #0f172a;
+}
+
+.brand-copy p {
+  margin: 4px 0 0;
+  font-size: 0.92rem;
+  color: #52627a;
+}
+
+.auth-card {
+  width: min(100%, 420px);
+  border-radius: 24px;
+  border: 1px solid #dfe8f5;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+}
+
+ion-card-header {
+  padding: 24px 24px 8px;
+}
+
+ion-card-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+ion-card-subtitle {
+  color: #52627a;
+  font-size: 0.9rem;
+}
+
+.auth-content {
+  padding: 8px 20px 20px;
+}
+
+.input-wrap {
+  --background: #ffffff;
+  --border-radius: 16px;
+  --padding-start: 12px;
+  --padding-end: 8px;
+  --inner-padding-end: 0;
+  --min-height: 60px;
+  margin-bottom: 16px;
+  border: 1px solid #dfe8f5;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.field-icon {
+  font-size: 20px;
+  color: #1d4ed8;
+  margin-right: 6px;
+}
+
+ion-input {
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  --color: #0f172a;
+  --placeholder-color: #94a3b8;
+  --placeholder-opacity: 1;
+}
+
+.visibility-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --color: #1d4ed8;
+}
+
+.primary-button {
+  --background: #1d4ed8;
+  --background-hover: #173fb3;
+  --border-radius: 14px;
+  --box-shadow: none;
+  height: 48px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.primary-button[disabled] {
+  opacity: 0.9;
+}
+
+.button-spinner {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.secondary-button {
+  --color: #1d4ed8;
+  --background: transparent;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .auth-shell {
+    padding: 24px 14px;
+  }
+
+  .brand-block {
+    width: min(100%, 100%);
+  }
+
+  .brand-copy h1 {
+    font-size: 1.5rem;
+  }
+
+  .auth-card {
+    border-radius: 20px;
+  }
+
+  ion-card-header {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .auth-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

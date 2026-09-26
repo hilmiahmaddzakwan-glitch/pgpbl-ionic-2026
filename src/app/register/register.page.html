@@ -1,0 +1,94 @@
+<ion-content [fullscreen]="true" class="auth-page">
+  <div class="auth-shell">
+    <div class="brand-block">
+      <div class="brand-icon">
+        <ion-icon name="create-outline"></ion-icon>
+      </div>
+      <div class="brand-copy">
+        <h1>Buat Akun</h1>
+        <p>Masukkan data Anda untuk mendaftar</p>
+      </div>
+    </div>
+
+    <ion-card class="auth-card">
+      <ion-card-header>
+        <ion-card-title>Daftar</ion-card-title>
+        <ion-card-subtitle>
+          Buat akun baru untuk mulai menggunakan aplikasi.
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="auth-content">
+        <ion-item lines="none" class="input-wrap">
+          <ion-icon name="mail-outline" slot="start" class="field-icon"></ion-icon>
+          <ion-input
+            [(ngModel)]="email"
+            name="email"
+            label="Email"
+            labelPlacement="floating"
+            placeholder="Masukkan email Anda"
+            type="email">
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="input-wrap">
+          <ion-icon name="lock-closed-outline" slot="start" class="field-icon"></ion-icon>
+          <ion-input
+            [(ngModel)]="password"
+            name="password"
+            [type]="showPassword ? 'text' : 'password'"
+            label="Password"
+            labelPlacement="floating"
+            placeholder="Masukkan password">
+            <ion-button
+              fill="clear"
+              slot="end"
+              class="visibility-button"
+              type="button"
+              (click)="showPassword = !showPassword">
+              <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="input-wrap">
+          <ion-icon name="shield-checkmark-outline" slot="start" class="field-icon"></ion-icon>
+          <ion-input
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            label="Konfirmasi Password"
+            labelPlacement="floating"
+            placeholder="Ulangi password">
+            <ion-button
+              fill="clear"
+              slot="end"
+              class="visibility-button"
+              type="button"
+              (click)="showConfirmPassword = !showConfirmPassword">
+              <ion-icon [name]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          class="primary-button"
+          (click)="register()"
+          [disabled]="isSubmitting">
+          <ion-spinner *ngIf="isSubmitting" name="crescent" class="button-spinner"></ion-spinner>
+          <span *ngIf="!isSubmitting">Register</span>
+          <span *ngIf="isSubmitting">Membuat akun...</span>
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          fill="clear"
+          routerLink="/login"
+          class="secondary-button">
+          Sudah punya akun? Masuk
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -9,29 +9,197 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
-/* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --ion-color-primary: #1d4ed8;
+  --ion-color-primary-rgb: 29, 78, 216;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #173fb3;
+  --ion-color-primary-tint: #eaf2ff;
+
+  --ion-color-secondary: #1d4ed8;
+  --ion-color-secondary-rgb: 29, 78, 216;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-shade: #173fb3;
+  --ion-color-secondary-tint: #eaf2ff;
+
+  --ion-color-success: #1d4ed8;
+  --ion-color-warning: #d97706;
+  --ion-color-danger: #dc2626;
+
+  --ion-background-color: #f5f7fb;
+  --ion-item-background: #ffffff;
+  --ion-toolbar-background: #1d4ed8;
+  --ion-text-color: #0f172a;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-color-step-50: #f8fafc;
+  --ion-color-step-100: #f1f5f9;
+  --ion-color-step-200: #e2e8f0;
+  --ion-color-step-400: #94a3b8;
+  --ion-color-step-600: #475569;
+
+  --app-primary: #1d4ed8;
+  --app-primary-dark: #173fb3;
+  --app-primary-light: #eaf2ff;
+  --app-surface: #ffffff;
+  --app-surface-soft: #f5f7fb;
+  --app-border: #dfe8f5;
+  --app-text: #0f172a;
+  --app-text-soft: #52627a;
+  --app-muted: #eef4ff;
+  --app-warning: #dc2626;
+}
+
+html {
+  --ion-font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: var(--app-text);
+}
+
+ion-app {
+  background: #f5f7fb;
+}
+
+ion-content {
+  --background: transparent;
+}
+
+ion-card {
+  box-shadow: 0 12px 32px rgba(20, 52, 120, 0.08);
+  border: 1px solid rgba(217, 227, 242, 0.9);
+}
+
+ion-button {
+  --border-radius: 14px;
+  --box-shadow: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+ion-item {
+  --border-radius: 14px;
+  --background: #ffffff;
+  --border-color: var(--app-border);
+  --inner-border-width: 0;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 58px;
+}
+
+ion-input {
+  --background: transparent;
+  --color: var(--app-text);
+  --placeholder-color: var(--app-text-soft);
+  --padding-top: 14px;
+  --padding-bottom: 14px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --highlight-color-focused: var(--app-primary);
+}
+
+ion-toolbar {
+  --background: #1d4ed8;
+  --color: #ffffff;
+  --border-color: transparent;
+}
+
+ion-title {
+  font-weight: 700;
+}
+
+ion-card-title {
+  font-weight: 700;
+  color: var(--app-text);
+}
+
+ion-card-subtitle {
+  color: var(--app-text-soft);
+}
+
+ion-card-content {
+  color: var(--app-text);
+}
+
+ion-header {
+  --box-shadow: none;
+}
+
+ion-tab-bar {
+  --background: rgba(255, 255, 255, 0.96);
+  --border: 1px solid rgba(217, 227, 242, 0.9);
+  height: 72px;
+  min-height: 72px;
+  max-height: 72px;
+  padding-top: 6px;
+  padding-bottom: calc(6px + env(safe-area-inset-bottom));
+  box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.06);
+  overflow: visible;
+}
+
+ion-tab-button {
+  --color: var(--app-text-soft);
+  --color-selected: var(--app-primary);
+  width: 100%;
+  max-width: none;
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4px;
+}
+
+ion-tab-button.tab-selected {
+  --background: rgba(29, 78, 216, 0.08);
+}
+
+ion-tab-button ion-icon {
+  display: block;
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+ion-tab-button ion-label {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  text-align: center;
+}
+
+ion-accordion {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--app-border);
+}
+
+ion-accordion ion-item {
+  --background: #ffffff;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
