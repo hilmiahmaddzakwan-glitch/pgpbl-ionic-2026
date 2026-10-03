@@ -23,6 +23,11 @@ const routes: Routes = [
       import('./maps/maps.module').then(m => m.MapsPageModule),
   },
   {
+    path: 'editpoint/:key',
+    loadChildren: () =>
+      import('./editpoint/editpoint.module').then(m => m.EditpointPageModule),
+  },
+  {
     path: 'splashscreen',
     loadChildren: () =>
       import('./splashscreen/splashscreen.module').then(
@@ -34,6 +39,11 @@ const routes: Routes = [
     redirectTo: '/splashscreen',
     pathMatch: 'full',
   },
+  {
+    path: 'createpoint',
+    loadChildren: () => import('./createpoint/createpoint.module').then( m => m.CreatepointPageModule)
+  },
+
 ];
 
 @NgModule({
