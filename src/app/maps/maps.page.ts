@@ -38,27 +38,36 @@ export class MapsPage implements OnInit {
       this.map = L.map('map').setView([-7.7956, 110.3695], 13);
 
       this.map.on('popupopen', event => {
-        const popupElement = event.popup.getElement();
-        if (!popupElement) {
+        const popupElement = event.popup.getElement() as HTMLElement | null;
+        if (!popupElement || popupElement.dataset['bound'] === 'true') {
           return;
         }
 
-        const editLink = popupElement.querySelector<HTMLAnchorElement>('.edit-link');
-        editLink?.addEventListener('click', clickEvent => {
-          clickEvent.preventDefault();
-          const key = editLink.dataset['key'];
-          if (key) {
-            void this.router.navigate(['/editpoint', key]);
-          }
-        });
+        popupElement.dataset['bound'] = 'true';
 
-        const deleteLink = popupElement.querySelector<HTMLAnchorElement>('.delete-link');
-        deleteLink?.addEventListener('click', clickEvent => {
-          clickEvent.preventDefault();
-          const key = deleteLink.dataset['key'];
-          if (key) {
-            void this.deletePoint(key);
-          }
+        const actions = popupElement.querySelectorAll<HTMLButtonElement>(
+          '.edit-link, .delete-link',
+        );
+
+        actions.forEach(action => {
+          action.addEventListener('click', clickEvent => {
+            clickEvent.preventDefault();
+            clickEvent.stopPropagation();
+
+            const key = action.dataset['key'];
+            if (!key) {
+              return;
+            }
+
+            if (action.classList.contains('edit-link')) {
+              void this.router.navigate(['/editpoint', key]);
+              return;
+            }
+
+            if (action.classList.contains('delete-link')) {
+              void this.confirmDeletePoint(key);
+            }
+          });
         });
       });
 
@@ -147,7 +156,7 @@ export class MapsPage implements OnInit {
 
         const marker = L.marker(coordinates as L.LatLngExpression);
         marker.bindPopup(
-          `${point.name || 'Point'}<br><a href="/editpoint/${key}" class="edit-link" data-key="${key}">Edit</a> | <a href="#" class="delete-link" data-key="${key}">Delete</a>`,
+          `<div><strong>${point.name || 'Point'}</strong></div><div><button type="button" class="edit-link" data-key="${key}">Edit</button> | <button type="button" class="delete-link" data-key="${key}">Delete</button></div>`,
         );
         marker.addTo(this.pointMarkers);
         this.markersByKey.set(key, marker);
@@ -155,21 +164,48 @@ export class MapsPage implements OnInit {
     }
   }
 
-  async deletePoint(key: string) {
-    try {
-      await this.dataService.deletePoint(key);
-      const marker = this.markersByKey.get(key);
-      if (marker) {
-        this.pointMarkers.removeLayer(marker);
-        this.markersByKey.delete(key);
-      }
-    } catch (error: any) {
-      const alert = await this.alertCtrl.create({
-        header: 'Delete Failed',
-        message: error.message,
-        buttons: ['OK'],
-      });
-      await alert.present();
-    }
+  async confirmDeletePoint(key: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Point',
+      message: 'Are you sure you want to delete this point?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Delete',
+          handler: async () => {
+            try {
+              await this.dataService.deletePoint(key);
+
+              const marker = this.markersByKey.get(key);
+              if (marker) {
+                this.pointMarkers.removeLayer(marker);
+                this.markersByKey.delete(key);
+              }
+
+              this.map.closePopup();
+
+              const successAlert = await this.alertCtrl.create({
+                header: 'Delete Success',
+                message: 'Point has been deleted successfully.',
+                buttons: ['OK'],
+              });
+              await successAlert.present();
+            } catch (error: any) {
+              const errorAlert = await this.alertCtrl.create({
+                header: 'Delete Failed',
+                message: error?.message || 'Failed to delete point.',
+                buttons: ['OK'],
+              });
+              await errorAlert.present();
+            }
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }
